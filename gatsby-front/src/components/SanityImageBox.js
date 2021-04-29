@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { mediaQuery } from '../styles';
 
 const Box = styled.div`
-  /* set max-width to sane width as gatsbyImageData */
-  max-width: 65rem;
   margin: 0 auto;
 
   p {
@@ -38,11 +36,11 @@ const SanityImageBox = ({
   name,
   idx,
   alt,
-  show,
-  mql,
+  show = false,
+  mql = null,
   dimensions = null,
 }) => {
-  const trigger = mql.navChange;
+  const trigger = mql?.navChange;
   return (
     <Box>
       <GatsbyImage

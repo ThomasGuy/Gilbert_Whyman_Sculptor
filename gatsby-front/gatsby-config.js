@@ -12,8 +12,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   siteMetadata: {
-    title: 'Template Site',
-    siteURL: 'https://template.co.uk',
+    title: 'Gilbert Whyman Sculptor',
+    siteURL: 'https://gilbertwhyman.co.uk',
     description: 'Gallery website',
     author: 'Thomas Guy <twguy.weddev@gmail.com>',
   },
@@ -42,4 +42,7 @@ module.exports = {
       },
     },
   ],
+  flags: {
+    FAST_DEV: true,
+  },
 };

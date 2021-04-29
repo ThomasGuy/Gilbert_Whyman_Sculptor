@@ -14,7 +14,7 @@ import { TitleContext } from '../components/Layout';
 import SanityImageBox from '../components/SanityImageBox';
 import { Modal } from '../components/SimpleModal';
 import SEO from '../components/SEO';
-import { GalleryLayout } from '../styles';
+import { GalleryLayout } from '../styles/gallery';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
 const Gallery = ({ data }) => {

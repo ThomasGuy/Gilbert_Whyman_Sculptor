@@ -7,7 +7,7 @@ export const Button = styled.button`
   top: 2px;
   right: 2px;
 
-  --button-size: calc(var(--nav-size) * 0.5);
+  --button-size: calc(var(--navSize) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
   background-color: var(--white);

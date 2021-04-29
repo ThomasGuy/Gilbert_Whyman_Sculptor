@@ -7,9 +7,9 @@ import { Link } from 'gatsby';
 // Dropdown styles
 const DropDown = styled(animated.div)`
   position: absolute;
-  top: calc(var(--nav-size) * 1.1);
+  top: calc(var(--navSize) * 1.1);
   left: 0;
-  width: 180px;
+  width: 25rem;
   background-color: var(--black);
   border: var(--border);
   border-radius: var(--border-radius);

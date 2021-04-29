@@ -1,16 +1,17 @@
 .global {
   --red: #ff4949;
-  --black: rgb(107, 68, 32);
+  --black: #6b4420;
   --yellow: #ffc600;
   --white: #fff;
   --offWhite: #ededed;
   --grey: #d8a7a7;
   --maxWidth: 1280px;
   --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
-  --bg: rgb(102, 56, 25);
-  --bg_link: hsl(34, 75%, 51%);
+  --bg: rgb(94, 50, 22);
+  --bg_link: hsl(34, 66%, 33%);
   --title: #442502;
   --link_hover: rgba(134, 80, 9, 0.2);
+  --bg_event: rgb(75, 41, 19);
 }
 
 .page {

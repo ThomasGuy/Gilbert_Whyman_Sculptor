@@ -80,6 +80,26 @@ function Nav({ title }) {
     }
   `);
 
+  const extras = [
+    {
+      name: 'gallery1',
+      _id: 'gallery1',
+      slug: { current: 'gallery1' },
+    },
+    {
+      name: 'gallery2',
+      _id: 'gallery2',
+      slug: { current: 'gallery2' },
+    },
+    {
+      name: 'gallery3',
+      _id: 'gallery3',
+      slug: { current: 'gallery3' },
+    },
+  ];
+
+  const newList = [...category.nodes, ...extras];
+
   return (
     <NavFixed>
       <NavbarNav>
@@ -91,11 +111,7 @@ function Nav({ title }) {
           key="burger"
           open={open}
           setOpen={setOpen}>
-          <NavCollapse
-            list={category.nodes}
-            dropref={dropdownRef}
-            setOpen={setOpen}
-          />
+          <NavCollapse list={newList} dropref={dropdownRef} setOpen={setOpen} />
         </NavItem>
       </NavbarNav>
     </NavFixed>

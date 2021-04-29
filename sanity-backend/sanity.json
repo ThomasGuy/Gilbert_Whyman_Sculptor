@@ -1,7 +1,7 @@
 {
   "root": true,
   "api": {
-    "projectId": "n64mpith",
+    "projectId": "02jr5fsj",
     "dataset": "production"
   },
   "project": {
@@ -18,19 +18,13 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
-    },
-    {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "src/dashboardConfig.js"
     }
   ]
 }
