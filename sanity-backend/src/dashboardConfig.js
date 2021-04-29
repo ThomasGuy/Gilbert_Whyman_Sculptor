@@ -3,7 +3,7 @@ export default {
     {
       name: 'gatsby',
       options: {
-        sites: [{ siteUrl: 'https://gatsbysanitytemplatemaster.gatsbyjs.io/' }],
+        sites: [{ siteUrl: 'https://preview-gilbertwhymansculptor.gtsb.io/' }],
       },
     },
   ],
