@@ -31,8 +31,13 @@ const Container = styled.div`
   gap: 1rem;
   grid-template-columns: ${({ width }) =>
     `repeat(auto-fill, minmax(${width}rem, 1fr))`};
-  grid-auto-rows: max-content;
+  grid-auto-rows: auto;
   grid-auto-flow: dense;
+
+  .wide {
+    grid-column: 1 / -1;
+    color: white;
+  }
 
   .tall2 {
     grid-row: span 2;
@@ -62,6 +67,19 @@ function addClass(ratio) {
     default:
       return '';
   }
+}
+
+function shuffleIndex(len) {
+  const index = new Array(len);
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < index.length; i++) {
+    index[i] = i;
+  }
+
+  return index
+    .map(a => [Math.random(), a])
+    .sort((a, b) => a[0] - b[0])
+    .map(a => a[1]);
 }
 
 const Gallery2 = () => {
@@ -96,15 +114,16 @@ const Gallery2 = () => {
   const gallery = pics.nodes.map(node => {
     const { name, image } = node;
     const { aspectRatio } = image.asset.metadata.dimensions;
-    return [
+    return (
       <GatsbyImage
         image={image.asset.gatsbyImageData}
         alt={name}
         ratio={aspectRatio}
-      />,
-      aspectRatio,
-    ];
+      />
+    );
   });
+
+  const index = shuffleIndex(gallery.length);
 
   const breakpoints = useBreakpoint();
 
@@ -125,15 +144,20 @@ const Gallery2 = () => {
 
   return (
     <Container width={width} span={span}>
+      <p className="wide">
+        This layout example uses all the images in the cms, it will look better
+        when you update Sanity Studio with larger images. All the image boxes
+        should be full i.e. no gaps{' '}
+      </p>
       {trail.map(({ opacity, scale, ...rest }, idx) => {
-        const ratio = parseFloat(gallery[idx][1]);
+        const ratio = parseFloat(gallery[index[idx]].props.ratio);
         const key = idx;
         return (
           <PictureBox
             key={key}
             className={addClass(ratio)}
             style={{ opacity, scale, ...rest }}>
-            {gallery[idx][0]}
+            {gallery[index[idx]]}
           </PictureBox>
         );
       })}

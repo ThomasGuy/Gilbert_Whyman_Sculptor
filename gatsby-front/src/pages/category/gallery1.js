@@ -13,6 +13,11 @@ const Container = styled.div`
   grid-auto-rows: max-content;
   gap: 3rem;
   padding: 2rem;
+
+  .wide {
+    color: white;
+    grid-column: 1 / -1;
+  }
 `;
 
 const Card = ({ children }) => {
@@ -64,6 +69,8 @@ const Gallery1 = () => {
           filter: { category: { name: { eq: "Portrait heads" } } }
         ) {
           nodes {
+            name
+            _id
             image {
               asset {
                 gatsbyImageData(layout: CONSTRAINED, width: 300)
@@ -77,7 +84,6 @@ const Gallery1 = () => {
                 url
               }
             }
-            name
           }
           totalCount
         }
@@ -92,9 +98,9 @@ const Gallery1 = () => {
   }, [setTitle]);
 
   const data = pics.nodes.map(node => {
-    const { image, name } = node;
+    const { image, name, _id } = node;
     return (
-      <Card>
+      <Card key={_id}>
         <div className="image">
           <GatsbyImage image={image.asset.gatsbyImageData} alt={name} />
         </div>
@@ -104,7 +110,15 @@ const Gallery1 = () => {
     );
   });
 
-  return <Container>{data}</Container>;
+  return (
+    <Container>
+      <p className="wide">
+        Note these Galleries 1, 2 and 3 can't be directly changed in Sanity
+        Studio though they do use your images from the cms.
+      </p>
+      {data}
+    </Container>
+  );
 };
 
 export default Gallery1;
