@@ -41,6 +41,7 @@ module.exports = {
         pathToConfigModule: `src/assets/typography`,
       },
     },
+    'gatsby-plugin-gatsby-cloud',
   ],
   flags: {
     FAST_DEV: true,
