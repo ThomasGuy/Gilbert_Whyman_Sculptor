@@ -33,7 +33,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-typography`,
