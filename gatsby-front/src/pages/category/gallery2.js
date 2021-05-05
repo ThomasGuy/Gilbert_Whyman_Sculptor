@@ -5,28 +5,17 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { TitleContext } from '../../components/Layout';
-import { useBreakpoint } from '../../hooks/useBreakpoint';
+// import { useBreakpoint } from '../../hooks/useBreakpoint';
 import { mediaQuery } from '../../styles';
 
 const PictureBox = styled(animated.div)`
-  display: grid;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   max-width: 80rem;
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.05);
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* object-fit: contain; */
-  }
 `;
 
 const Container = styled.div`
   margin-top: var(--navSize);
-  padding: 2rem;
+  padding: 2rem 1rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: ${({ width }) =>
@@ -53,6 +42,7 @@ const Container = styled.div`
 
   ${mediaQuery('sm')`
     gap: 2rem;
+    padding: 2rem;
  `};
 `;
 
@@ -119,22 +109,28 @@ const Gallery2 = () => {
         image={image.asset.gatsbyImageData}
         alt={name}
         ratio={aspectRatio}
+        loading="eager"
+        imgStyle={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
       />
     );
   });
 
   const index = shuffleIndex(gallery.length);
 
-  const breakpoints = useBreakpoint();
+  // const breakpoints = useBreakpoint();
 
-  let width = 14;
-  let span = 2;
+  const width = 14;
+  const span = 2;
 
-  breakpoints.span ? (span = 3) : (span = 2);
+  // breakpoints.span ? (span = 3) : (span = 2);
 
-  if (breakpoints.galleryMd) {
-    breakpoints.galleryLg ? (width = 20) : (width = 18);
-  }
+  // if (breakpoints.galleryMd) {
+  //   breakpoints.galleryLg ? (width = 20) : (width = 18);
+  // }
 
   const trail = useTrail(gallery.length, {
     opacity: 1,
@@ -146,8 +142,7 @@ const Gallery2 = () => {
     <Container width={width} span={span}>
       <p className="wide">
         This layout example uses all the images in the cms, it will look better
-        when you update Sanity Studio with larger images. All the image boxes
-        should be full i.e. no gaps{' '}
+        when you update Sanity Studio with larger images
       </p>
       {trail.map(({ opacity, scale, ...rest }, idx) => {
         const ratio = parseFloat(gallery[index[idx]].props.ratio);
