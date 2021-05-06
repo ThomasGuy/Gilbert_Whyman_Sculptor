@@ -3,14 +3,15 @@ import { animated, useTrail } from 'react-spring';
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import Image from 'gatsby-plugin-sanity-image';
 import { TitleContext } from '../../components/Layout';
-// import { useBreakpoint } from '../../hooks/useBreakpoint';
 import { mediaQuery } from '../../styles';
+import SEO from '../../components/SEO';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 
 const PictureBox = styled(animated.div)`
   position: relative;
-  max-width: 80rem;
+  max-width: 65rem;
 `;
 
 const Container = styled.div`
@@ -20,7 +21,6 @@ const Container = styled.div`
   gap: 1rem;
   grid-template-columns: ${({ width }) =>
     `repeat(auto-fill, minmax(${width}rem, 1fr))`};
-  grid-auto-rows: auto;
   grid-auto-flow: dense;
 
   .wide {
@@ -83,10 +83,12 @@ const Gallery2 = () => {
     query {
       pics: allSanityPicture {
         nodes {
+          id
           name
           image {
+            ...ImageWithPreview
             asset {
-              gatsbyImageData(layout: CONSTRAINED, width: 400)
+              url
               metadata {
                 dimensions {
                   width
@@ -101,38 +103,41 @@ const Gallery2 = () => {
     }
   `);
 
-  const gallery = pics.nodes.map(node => {
-    const { name, image } = node;
-    const { aspectRatio } = image.asset.metadata.dimensions;
-    return (
-      <GatsbyImage
-        image={image.asset.gatsbyImageData}
-        alt={name}
-        ratio={aspectRatio}
-        loading="eager"
-        imgStyle={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
-      />
-    );
+  const imageProps = pics.nodes.map((node, idx) => {
+    const { name, image, id } = node;
+    return {
+      image,
+      alt: name,
+      title: name,
+      idx,
+      key: id,
+      ratio: image.asset.metadata.dimensions.aspectRatio,
+      loading: 'eager',
+      imgStyle: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        marginBottom: '0',
+      },
+    };
   });
 
-  const index = shuffleIndex(gallery.length);
+  // const index = shuffleIndex(imageProps.length);
 
-  // const breakpoints = useBreakpoint();
+  const breakpoints = useBreakpoint();
 
-  const width = 14;
-  const span = 2;
+  let width = 14;
+  let span = 2;
 
-  // breakpoints.span ? (span = 3) : (span = 2);
+  breakpoints.span ? (span = 3) : (span = 2);
 
-  // if (breakpoints.galleryMd) {
-  //   breakpoints.galleryLg ? (width = 20) : (width = 18);
-  // }
+  if (breakpoints.galleryMd) {
+    breakpoints.galleryLg ? (width = 18) : (width = 16);
+  } else {
+    width = 14;
+  }
 
-  const trail = useTrail(gallery.length, {
+  const trail = useTrail(imageProps.length, {
     opacity: 1,
     scale: 1,
     from: { opacity: 0, scale: 0.3 },
@@ -144,15 +149,23 @@ const Gallery2 = () => {
         This layout example uses all the images in the cms, it will look better
         when you update Sanity Studio with larger images
       </p>
-      {trail.map(({ opacity, scale, ...rest }, idx) => {
-        const ratio = parseFloat(gallery[index[idx]].props.ratio);
-        const key = idx;
+      {trail.map((props, idx) => {
+        const { image, key, title, ratio, imgStyle, ...others } = imageProps[
+          idx
+        ];
         return (
           <PictureBox
-            key={key}
             className={addClass(ratio)}
-            style={{ opacity, scale, ...rest }}>
-            {gallery[index[idx]]}
+            key={key}
+            style={{ ...props }}>
+            <SEO title={title} imageSrc={image.asset.url} />
+            <Image
+              {...image}
+              width={650}
+              title={title}
+              style={imgStyle}
+              {...others}
+            />
           </PictureBox>
         );
       })}
