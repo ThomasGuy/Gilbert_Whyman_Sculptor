@@ -78,7 +78,7 @@ const Contact = ({ pageContext }) => {
             <ul className="gridIt">
               {links.map((link, idx) => (
                 <li key={makeId('link', idx)} className="middle">
-                  <a href={`${link.url}`}>{link.name}</a>
+                  <a href={`${link.href}`}>{link.name}</a>
                 </li>
               ))}
             </ul>
