@@ -90,3 +90,19 @@ export const Banner = styled.h2`
     font-size: 3.4rem;
   `};
 `;
+
+export const MenuItemStyled = styled.div`
+  height: 4.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  color: var(--offWhite);
+
+  &:hover,
+  &.active {
+    background-color: #525357;
+  }
+`;

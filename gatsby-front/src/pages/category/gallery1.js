@@ -85,7 +85,6 @@ const Gallery1 = () => {
               }
             }
           }
-          totalCount
         }
       }
     `
