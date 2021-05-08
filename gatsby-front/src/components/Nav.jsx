@@ -158,7 +158,7 @@ function Nav({ title }) {
           <NavLink icon={<HomeIcon />} key="Home" />
           <Banner className="title">{title}</Banner>
           <Link to="/contact" activeStyle={{ color: 'yellow', opacity: '1' }}>
-            Contact
+            About
           </Link>
           {newList.map(node => {
             const { name, _id, slug } = node;

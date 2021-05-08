@@ -19,7 +19,7 @@ const Contact = ({ pageContext }) => {
     setTitle(name);
   }, [setTitle, name]);
 
-  const firstName = name.split(' ')[0];
+  // const firstName = name.split(' ')[0];
 
   const bioText = biography.map((bio, idx) => (
     <Bio className="bio" key={makeId('bio', idx)}>

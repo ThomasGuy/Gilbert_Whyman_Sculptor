@@ -14,7 +14,7 @@ export const Page = styled.div`
   .email {
     font-size: 1.6rem;
 
-    ${mediaQueryMax('sm')`
+    ${mediaQueryMax('md')`
       margin-top: 2rem;
       order: -1;
       `};

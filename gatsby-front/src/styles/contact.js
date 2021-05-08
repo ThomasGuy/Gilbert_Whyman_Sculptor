@@ -48,8 +48,6 @@ export const CardRight = styled.div`
 
   ${mediaQuery('md')`
     grid-template-columns: 1fr 1fr;
-
-
     .main-image {
       grid-col: 2 / -1;
     }
