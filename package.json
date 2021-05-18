@@ -3,7 +3,7 @@
   "private": "true",
   "version": "1.0.0",
   "description": "sculpture gallery Gatsby website using Sanityio cms",
-  "main": "gatsby serve",
+  "main": "cd ./gatsby-front && gatsby serve",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -13,7 +13,7 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   siteMetadata: {
     title: 'Gilbert Whyman Sculptor',
-    siteURL: 'https://gilbertwhyman.co.uk',
+    siteUrl: 'https://gilbertwhyman.co.uk',
     description: 'Gallery website',
     author: 'Thomas Guy <twguy.weddev@gmail.com>',
   },
@@ -35,6 +35,7 @@ module.exports = {
         token,
       },
     },
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
