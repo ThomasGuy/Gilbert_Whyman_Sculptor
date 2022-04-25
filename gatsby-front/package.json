@@ -1,7 +1,7 @@
 {
   "name": "gatsby-front",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "Gilbert Whyman Sculptor",
   "author": "Thomas Guy <twguy.webdev@gmail.com>",
   "keywords": [

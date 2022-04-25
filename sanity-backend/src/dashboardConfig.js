@@ -3,7 +3,11 @@ export default {
     {
       name: 'gatsby',
       options: {
-        sites: [{ siteUrl: 'https://preview-gilbertwhymansculptor.gtsb.io/' }],
+        sites: [
+          {
+            siteUrl: 'https://preview-gilbertwhymansculptormain71052.gtsb.io/',
+          },
+        ],
       },
     },
   ],

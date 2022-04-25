@@ -1,6 +1,6 @@
 {
   "name": "gatsby_sanity_template",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "description": "A gallery website template",
   "main": "package.json",
@@ -19,9 +19,9 @@
   ],
   "dependencies": {
     "@sanity/base": "^2.10.2",
-    "@sanity/components": "^2.2.6",
+    "@sanity/components": "^2.14.0",
     "@sanity/core": "^2.10.2",
-    "@sanity/dashboard": "^2.7.0",
+    "@sanity/dashboard": "^2.29.5",
     "@sanity/default-layout": "^2.10.2",
     "@sanity/default-login": "^2.8.0",
     "@sanity/desk-tool": "^2.10.2",
